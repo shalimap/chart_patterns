@@ -22,24 +22,30 @@ class PageThree extends StatelessWidget {
           itemCount: chartProvider.savedCharts.length,
           itemBuilder: (context, index) {
             final chart = chartProvider.savedCharts[index];
-            return ListTile(
-              title: Text(chart.chartType),
-              subtitle: Text(
-                'Data: ${chart.data.join(', ')}',
-                style: GoogleFonts.poppins(
-                    fontSize: 15, fontWeight: FontWeight.normal),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PageTwo(
-                      chartType: chart.chartType,
-                      data: chart.data,
+            return Card(
+              child: ListTile(
+                title: Text(
+                  chart.chartType,
+                  style: GoogleFonts.poppins(
+                      fontSize: 12, fontWeight: FontWeight.normal),
+                ),
+                subtitle: Text(
+                  'Data: ${chart.data.join(', ')}',
+                  style: GoogleFonts.poppins(
+                      fontSize: 12, fontWeight: FontWeight.normal),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PageTwo(
+                        chartType: chart.chartType,
+                        data: chart.data,
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           },
         ),
